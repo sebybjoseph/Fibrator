@@ -1,0 +1,51 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block styling %}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'Fibonacci/index.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>Welcome to Fibrator</h1>
+    <em>- The Fibonacci Generator</em>
+  </div>
+  <div class="row main">
+        <form method="post" action="{% url 'Fibonacci:get_result' %}">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="incorrectTranscription">Enter the number</label>
+            <input type="text" class="form-control" name='input_value' id="input_value" placeholder="Enter a number here" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Find</button>
+        </form>
+      <a href="{% url 'Fibonacci:clear_cache' %}">
+        <button class="btn btn-danger">Clear Cache</button>
+      </a>
+  </div>
+  {% if error %}
+  <div class="row error">
+    <div class="well well-sm"><h2>Error Message</h2> {{error}}</div>
+  </div>
+  {% elif answer %}
+  <div class="row answer">
+    <div class="well well-sm"><h2>Answer</h2> {{answer}}</div>
+    <div class="well well-sm"><h2>Time Taken</h2>  {{time_taken}}</div>
+    <div class="well well-sm"><h2>Available Cache</h2>
+        First {{fibonacci_numbers|length}} entries ...
+    </div>
+  </div>
+  {% elif fibonacci_numbers %}
+    <div class="row cache">
+      <div class="well well-sm"><h2>Available Cache</h2>
+          First {{fibonacci_numbers|length}} entries ...
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+{% endblock %}

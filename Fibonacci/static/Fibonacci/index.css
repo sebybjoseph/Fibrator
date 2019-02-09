@@ -1,0 +1,43 @@
+body{
+  background: #000000;
+  background: -webkit-linear-gradient(to right, #434343, #000000);
+  background: linear-gradient(to right, #434343, #000000);
+  text-align: center;
+}
+
+.jumbotron{
+  width: 80%;
+  margin: 0 auto;
+  background-color: rgba(170,170,170,0.5);
+  color: #111;
+}
+
+.main{
+  border: 2px grey solid;
+  width: 40%;
+  padding: 20px;
+  background-color: rgba(170,170,170,0.5);
+  border-radius: 5%;
+  margin-top: 50px;
+  margin: 20px auto;
+  color: white;
+}
+
+.main button{
+  display: inline-block;
+}
+
+.error .well{
+  background-color: #f44242;
+  color: white;
+}
+
+.answer .well{
+  background-color: #1ece5c;
+  color: white;
+}
+
+.cache .well{
+  background-color: #fcf800;
+  color: black;
+}
